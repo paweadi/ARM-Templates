@@ -17,8 +17,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactSatagingDirectory)'
-    ArtifactName: ARM-Templates
-    publishLocation: Container
+
 
