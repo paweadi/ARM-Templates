@@ -5,10 +5,10 @@ pool:
   name: Default
 steps:
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  displayName: 'Copy Files to Artifacts'
   inputs:
     SourceFolder: 'LogicApp-Temp'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    TargetFolder: '$(build.artifactstagingdirectory)/LogicApp'
 
 - task: ArchiveFiles@2
   displayName: 'Archive LogicApp-Temp'
@@ -16,5 +16,9 @@ steps:
     rootFolderOrFile: 'LogicApp-Temp'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactSatagingDirectory)'
+    ArtifactName: ARM-Templates
+    publishLocation: Container
 
