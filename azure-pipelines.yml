@@ -13,6 +13,7 @@ stages:
             displayName: 'Copy Files to Artifacts'
             inputs:
               SourceFolder: 'LogicApp-Temp'
+              Contents: '**'
               TargetFolder: '$(build.artifactstagingdirectory)'
 
   - stage: Zip
@@ -22,13 +23,19 @@ stages:
         - task: ArchiveFiles@2
           displayName: 'Archive LogicApp-Temp'
           inputs:
-           rootFolderOrFile: 'LogicApp-Temp'
+            rootFolderOrFile: 'LogicApp-Temp'
+            includeRootFolder: true
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+            replaceExistingArchive: true
 
   - stage: Publish
     jobs:
       - job: PublishFiles
         steps:
-        - task: PublishBuildArtifacts@1
-          displayName: 'Publish Artifact'
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
           
 
