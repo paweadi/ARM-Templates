@@ -8,7 +8,7 @@ steps:
   displayName: 'Copy Files to Artifacts'
   inputs:
     SourceFolder: 'LogicApp-Temp'
-    TargetFolder: '$(build.artifactstagingdirectory)/LogicApp'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
 - task: ArchiveFiles@2
   displayName: 'Archive LogicApp-Temp'
