@@ -5,29 +5,32 @@ pool:
   name: Default
 
 stages:
-- stage: Copy
-  jobs:
-  - job: Copy Files
-  steps:
-    - task: CopyFiles@2
-      displayName: 'Copy Files to Artifacts'
-      inputs:
-      SourceFolder: 'LogicApp-Temp'
-      TargetFolder: '$(build.artifactstagingdirectory)'
+  - stage: Copy
+    jobs:
+      - job: Copy Files
+        steps:
+          - task: CopyFiles@2
+            displayName: 'Copy Files to Artifacts'
+            inputs:
+              SourceFolder: 'LogicApp-Temp'
+              TargetFolder: '$(build.artifactstagingdirectory)'
 
-- stage: Zip file
-  jobs:
-   - job: Zip Files
-  steps:
-    - task: ArchiveFiles@2
-      displayName: 'Archive LogicApp-Temp'
-      inputs:
-      rootFolderOrFile: 'LogicApp-Temp'
+  - stage: Zip file
+    jobs:
+      - job: Zip Files
+        steps:
+        - task: ArchiveFiles@2
+          displayName: 'Archive LogicApp-Temp'
+          inputs:
+           rootFolderOrFile: 'LogicApp-Temp'
 
--stage: Publish
- jobs:
-  - job: Publish Files
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-
+  - stage: Publish
+    jobs:
+      - job: Publish Files
+        steps:
+        - task: PublishBuildArtifacts@1
+          inputs:
+           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+           ArtifactName: 'drop'
+           publishLocation: 'Container'
 
