@@ -11,7 +11,7 @@ stages:
           inputs:
             SourceFolder: 'LogicApp-Temp'
             TargetFolder: '$(build.artifactstagingdirectory)'
-stages: 
+
   - stage: Archive
     jobs: 
       - job: Archivefiles
@@ -20,7 +20,7 @@ stages:
           displayName: 'Archive LogicApp-Temp'
           inputs:
             rootFolderOrFile: 'LogicApp-Temp'
-stages:
+
   - stage: Publish
     jobs:
       - job: Publishfiles
