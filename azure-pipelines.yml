@@ -21,9 +21,8 @@ stages:
       - job: ZipFiles
         steps:
         - task: ArchiveFiles@2
-          displayName: 'Archive LogicApp-Temp'
           inputs:
-            rootFolderOrFile: 'LogicApp-Temp'
+            rootFolderOrFile: '$(Build.BinariesDirectory)/LogicApp-Temp'
             includeRootFolder: true
             archiveType: 'zip'
             archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
@@ -36,7 +35,7 @@ stages:
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
+            ArtifactName: 'ARM-Drop'
             publishLocation: 'Container'
           
 
