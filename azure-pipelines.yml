@@ -3,18 +3,30 @@ trigger:
 
 pool:
   name: Default
-steps:
-- task: CopyFiles@2
-  displayName: 'Copy Files to Artifacts'
-  inputs:
-    SourceFolder: 'LogicApp-Temp'
-    TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive LogicApp-Temp'
-  inputs:
-    rootFolderOrFile: 'LogicApp-Temp'
+stages:
+- stage: Copy
+  jobs:
+  - job: Copy Files
+  steps:
+    - task: CopyFiles@2
+      displayName: 'Copy Files to Artifacts'
+      inputs:
+      SourceFolder: 'LogicApp-Temp'
+      TargetFolder: '$(build.artifactstagingdirectory)'
 
+- stage: Zip file
+  jobs:
+   - job: Zip Files
+  steps:
+    - task: ArchiveFiles@2
+      displayName: 'Archive LogicApp-Temp'
+      inputs:
+      rootFolderOrFile: 'LogicApp-Temp'
+
+-stage: Publish
+ jobs:
+  - job: Publish Files
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
 
