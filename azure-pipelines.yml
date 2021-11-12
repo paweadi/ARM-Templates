@@ -11,5 +11,5 @@ steps:
     SourcePath: 'https://github.com/paweadi/ARM-Templates'
     azureSubscription: 'Pawe_AZ_SP(36c584c6-f9d0-416e-9852-a561e2d74c70)'
     Destination: 'AzureBlob'
-    storage: 'ARMstorage'
+    storage: 'pawearmstorage'
     ContainerName: 'LogicApp-Template'
