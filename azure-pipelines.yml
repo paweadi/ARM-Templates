@@ -15,7 +15,7 @@ stages:
               SourceFolder: 'LogicApp-Temp'
               TargetFolder: '$(build.artifactstagingdirectory)'
 
-  - stage: Zip file
+  - stage: Zip
     jobs:
       - job: ZipFiles
         steps:
