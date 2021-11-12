@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "36c584c6-f9d0-416e-9852-a561e2d74c70"
+        },
+        "name": {
+            "value": "LogicApp-ARM-Template"
+        },
+        "location": {
+            "value": "South India"
+        },
+        "hostingPlanName": {
+            "value": "ASP-ARMTemplates-b48f"
+        },
+        "serverFarmResourceGroup": {
+            "value": "ARM-Templates"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "storageAccountName": {
+            "value": "storageaccountarmteaf69"
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "use32BitWorkerProcess": {
+            "value": true
+        }
+    }
+}
