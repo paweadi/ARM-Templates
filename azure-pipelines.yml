@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: 'C:\Users\pavadi\Downloads\Artifacts-Samples-Test'
+            PathtoPublish: 'LogicApp-Temp'
             ArtifactName: 'ARM-Drop'
             publishLocation: 'Container'
           
