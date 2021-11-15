@@ -18,13 +18,6 @@ parameters:
 pool:
   name: Default
 
-stages:
-  - stage: checkout
-    jobs:
-      - job: checkoutRepo
-        steps: 
-        - checkout: ${parameter.values}
-
   - stage: Copy
     jobs:
     - job: Copyfiles
