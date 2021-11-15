@@ -23,7 +23,7 @@ stages:
     jobs:
       - job: checkoutRepo
         steps: 
-        - checkout: ARM-Templates
+        - checkout: ${parameter.values}
 
   - stage: Copy
     jobs:
