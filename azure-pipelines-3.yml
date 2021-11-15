@@ -4,7 +4,7 @@ resources:
      type: github
      ref: LogicApp-Temp
      name: paweadi/ARM-Templates
-     endpoint: MyGitHubServiceConnection
+     endpoint: paweadi
 parameters:
   - name: Build
     displayName: Choose value
