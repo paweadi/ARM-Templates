@@ -30,6 +30,6 @@ stages:
     steps: 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/Azure Pipelines'
         ArtifactName: 'drop'
         publishLocation: 'Container'
