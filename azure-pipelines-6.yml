@@ -1,0 +1,18 @@
+pool:
+  name: Default
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to Azure Artifacts'
+  inputs:
+    SourceFolder: 'LogicApp-Temp'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive LogicApp-Temp'
+  inputs:
+    rootFolderOrFile: 'LogicApp-Temp'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: LogicApp'
+  inputs:
+    ArtifactName: LogicApp
