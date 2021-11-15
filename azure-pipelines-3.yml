@@ -12,14 +12,17 @@ stages:
         SourceFolder: 'LogicApp-Temp'
         TargetFolder: '$(build.artifactstagingdirectory)'
 
-- stage: Archieve
+- stage: Zip
   jobs:
-  - job: ArchieveFiles
+  - job: ArchiveFiles
     steps:
     - task: ArchiveFiles@2
-      displayName: 'Archive LogicApp-Temp'
       inputs:
         rootFolderOrFile: 'LogicApp-Temp'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
 
 - stage: Publish
   jobs:
