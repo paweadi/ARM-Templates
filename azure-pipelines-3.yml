@@ -24,11 +24,12 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
 
-- stage: Publish
+- stage: publish
   jobs:
   - job: PublishArtifacts
-    steps:
+    steps: 
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
       inputs:
-         ArtifactName: LogicApp
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
