@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            PathtoPublish: 'C:\Users\pavadi\Downloads\Artifacts-Samples-Test'
             ArtifactName: 'ARM-Drop'
             publishLocation: 'Container'
           
