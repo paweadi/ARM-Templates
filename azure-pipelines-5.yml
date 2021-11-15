@@ -1,10 +1,3 @@
-parameters:
-  - name: repo
-    type: string
-    displayName: 'select repo name'
-    values:
-      - ARM-Templates
-
 resources:
  repositories:
    - repository: ARM-Templates
