@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '$(System.DefaultWorkingDirectory)/LogicApp-Temp'
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/LogicApp-Temp'
             ArtifactName: 'FileDrop'
             publishLocation: 'Container'
           
