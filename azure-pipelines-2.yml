@@ -9,7 +9,8 @@ stages:
         - task: CopyFiles@2
           displayName: 'Copy Files to Azure Artifacts'
           inputs:
-            SourceFolder: 'LogicApp-Temp'
+            SourceFolder: '$(System.DefaultWorkingDirectory)/_paweadi_ARM-Templates/LogicApp-Temp'
+            Contents: '**'
             TargetFolder: '$(build.artifactstagingdirectory)'
 
   - stage: Archive
@@ -19,13 +20,19 @@ stages:
         - task: ArchiveFiles@2
           displayName: 'Archive LogicApp-Temp'
           inputs:
-            rootFolderOrFile: 'LogicApp-Temp'
+            rootFolderOrFile: '''$(System.DefaultWorkingDirectory)/_paweadi_ARM-Templates/LogicApp-Temp'
+            includeRootFolder: true
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+            replaceExistingArchive: true
 
   - stage: Publish
     jobs:
       - job: Publishfiles
         steps: 
         - task: PublishBuildArtifacts@1
-          displayName: 'Publish Artifact: LogicApp'
+          displayName: 'Publish Artifact: drop'
           inputs:
-            ArtifactName: LogicApp
+            PathtoPublish: '$(System.DefaultWorkingDirectory)/_paweadi_ARM-Templates/LogicApp-Temp'
+            ArtifactName: 'ARMDrop'
+            publishLocation: 'Container'
