@@ -33,6 +33,6 @@ stages:
         - task: PublishBuildArtifacts@1
           displayName: 'Publish Artifact: drop'
           inputs:
-            PathtoPublish: '$(System.DefaultWorkingDirectory)/_paweadi_ARM-Templates/LogicApp-Temp'
+            PathtoPublish: '$(System.DefaultWorkingDirectory)'
             ArtifactName: 'ARMDrop'
             publishLocation: 'Container'
