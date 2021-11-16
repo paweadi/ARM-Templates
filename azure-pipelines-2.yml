@@ -9,7 +9,7 @@ stages:
         - task: CopyFiles@2
           displayName: 'Copy Files to Azure Artifacts'
           inputs:
-            SourceFolder: 'paweadi_ARM-Templates/LogicApp-Temp'
+            SourceFolder: 'LogicApp-Temp'
             Contents: '**'
             TargetFolder: '$(build.artifactstagingdirectory)'
 
@@ -20,7 +20,7 @@ stages:
         - task: ArchiveFiles@2
           displayName: 'Archive LogicApp-Temp'
           inputs:
-            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/_paweadi_ARM-Templates/LogicApp-Temp'
+            rootFolderOrFile: 'LogicApp-Temp'
             includeRootFolder: true
             archiveType: 'zip'
             archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
