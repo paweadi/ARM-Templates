@@ -1,0 +1,25 @@
+pool:
+  name: Default
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to Azure Artifacts'
+  inputs:
+    SourceFolder: 'LogicApp-Temp'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive LogicApp-Temp'
+  inputs:
+    rootFolderOrFile: 'LogicApp-Temp'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: LogicApp'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'ARMDrop'
+    publishLocation: 'Container'
