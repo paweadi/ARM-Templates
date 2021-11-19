@@ -11,7 +11,7 @@ stages:
           - task: CopyFiles@2
             displayName: 'Copy Files to Artifacts'
             inputs:
-              SourceFolder: 'LogicApp-Temp'
+              SourceFolder: '$(Build.SourcesDirectory)'
               Contents: '**'
               TargetFolder: '$(build.artifactstagingdirectory)'
 
