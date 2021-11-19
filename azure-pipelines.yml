@@ -1,25 +1,41 @@
-pool:
-  name: Default
-steps:
-- task: CopyFiles@2
-  displayName: 'Copy Files to Azure Artifacts'
-  inputs:
-    SourceFolder: 'LogicApp-Temp'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+trigger:
+- none
 
-- task: ArchiveFiles@2
-  displayName: 'Archive LogicApp-Temp'
-  inputs:
-    rootFolderOrFile: 'LogicApp-Temp'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+stages:
+  - stage: checkout
+    jobs:
+    - job: "CopyFiles"
+      pool:
+        name: Default
+      - task: CopyFiles@2
+            displayName: 'Copy Files to Azure Artifacts'
+            inputs:
+              SourceFolder: 'LogicApp-Temp'
+              Contents: '**'
+              TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: LogicApp'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'ARMDrop'
-    publishLocation: 'Container'
+  - stage: Archive
+    jobs:
+    - job: "Archivefiles"
+      pool:
+        name: Default
+    - task: ArchiveFiles@2
+      displayName: 'Archive LogicApp-Temp'
+      inputs:
+        rootFolderOrFile: 'LogicApp-Temp'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+
+  - stage: Publish
+    jobs:
+      - job: "Publishfiles"
+        pool:
+         name: Default
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: LogicApp'
+        inputs:
+          PathtoPublish: '$(Pipeline.Workspace)'
+          ArtifactName: 'ARMDrop'
+          publishLocation: 'Container'
