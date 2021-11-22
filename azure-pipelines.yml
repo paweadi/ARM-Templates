@@ -32,10 +32,11 @@ stages:
     jobs:
       - job: PublishFiles
         steps:
-        - task: PublishBuildArtifacts@1
+        - task: PublishPipelineArtifact@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'FileDrop'
-            publishLocation: 'Container'
-          
+            targetPath: '$(Pipeline.Workspace)'
+            artifact: 'Drop'
+            publishLocation: 'pipeline'
+
+            
 
