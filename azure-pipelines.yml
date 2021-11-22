@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(Pipeline.Workspace)'
+            targetPath: 'LogicApp-Temp'
             artifact: 'Drop'
             publishLocation: 'pipeline'
 
