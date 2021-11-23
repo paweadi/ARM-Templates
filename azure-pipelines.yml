@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(Pipeline.Workspace)/*.zip'
+            targetPath: '$(Pipeline.Workspace)'
             artifact: 'Drop'
             publishLocation: 'pipeline'
 
