@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(C:\agent\_work\6\a\*.zip)'
+            targetPath: 'LogicApp-Temp/*.zip'
             artifact: 'Drop'
             publishLocation: 'pipeline'
 
