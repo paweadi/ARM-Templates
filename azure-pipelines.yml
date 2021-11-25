@@ -34,7 +34,7 @@ stages:
         steps:
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(Agent.ReleaseDirectory)'
+            targetPath: '$(System.ArtifactsDirectory)'
             artifact: 'Drop'
             publishLocation: 'pipeline'
 
